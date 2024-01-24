@@ -41,7 +41,7 @@ cd /mnt
 If you don't have SPEC 2017, skip the `-v ~/cpu2017:/home/lfi/cpu2017:U` argument.
 
 ```
-podman run -v ~/cpu2017:/home/lfi/cpu2017:U -it --user lfi --workdir /home/lfi --security-opt=seccomp=unconfined lfi /bin/bash
+podman run -v ~/cpu2017:/home/lfi/cpu2017:U -it --user lfi --workdir /home/lfi --name lfi --security-opt=seccomp=unconfined lfi /bin/bash
 ```
 
 # SPEC 2017 benchmark
@@ -128,10 +128,16 @@ minute to run.
 
 ## gVisor (optional)
 
-If your machine uses 4K pages (not the case on Asahi Linux), you can also run
-these benchmarks with gVisor:
+Running gVisor is optional. If your setup can support gVisor (4K pages), you
+can run the benchmarks with gVisor as well. Unfortunately these benchmarks
+cannot be run from inside Podman, so you must copy the directory to your host
+and run the binaries there. You may need to wait 10x as long for the gVisor
+benchmarks to complete, since these benchmarks are significantly slower with
+gVisor than with Linux. Run these commands outside the container:
 
 ```
+podman cp lfi:/home/lfi/microbenchmarks .
+cd microbenchmarks
 sudo ./gvisor/runsc --network none do /bin/bash
 # ./run-linux.sh
 ```
