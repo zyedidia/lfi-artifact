@@ -19,9 +19,8 @@ sudo apt install podman
 2. Download and import the Podman container.
 
 ```
-wget <TODO:fill in URL>
-xz -vd lfi.tar.xz
-podman import lfi.tar
+wget https://github.com/zyedidia/lfi-artifact/releases/download/pre-built/lfi.tar.xz
+podman import lfi.tar.xz lfi
 ```
 
 3. Download SPEC 2017 and install it to `/home/$USER/cpu2017`.
