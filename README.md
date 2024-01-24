@@ -3,7 +3,8 @@
 This artifact will benchmark LFI and various WebAssembly engines on the SPEC
 2017 suite. You must have a license for SPEC 2017 and already have access to
 the file `cpu2017.iso`. If you don't have SPEC 2017, you will only be able to
-run the microbenchmarks.
+run the microbenchmarks. The code for LFI is available at
+https://github.com/zyedidia/lfi.
 
 It must be run on a Linux ARM64 machine. On Apple Silicon you may run from
 inside a virtual machine on MacOS or use Asahi Linux. Other possible ARM64
